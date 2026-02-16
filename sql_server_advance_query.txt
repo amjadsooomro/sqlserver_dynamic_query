@@ -41,13 +41,18 @@ EXEC sp_executesql
  EXEC sp_help 'Users';
 
 
- 
- SELECT name 
-FROM sys.tables;
+select name
+from sys.databases
 
- 
- select name
- from sys.databases
+select name
+from sys.tables
 
+
+select name
+from sys.
+triggers
+
+select name
+from sys.procedures
 
 
