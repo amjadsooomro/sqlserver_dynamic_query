@@ -37,3 +37,17 @@ EXEC sp_executesql
     @Name=@Name,
     @Email=@Email;
 
+ exec sp_rename 'user','users'
+ EXEC sp_help 'Users';
+
+
+ 
+ SELECT name 
+FROM sys.tables;
+
+ 
+ select name
+ from sys.databases
+
+
+
