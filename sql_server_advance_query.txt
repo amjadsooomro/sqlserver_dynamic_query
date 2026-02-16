@@ -1,14 +1,14 @@
 
-DECLARE @DatabaseName NVARCHAR(100) = 'DynamicDB';
-DECLARE @SQL NVARCHAR(MAX);
+DECLARE @DatabaseName VARCHAR(45) = 'DynamicDB';
+DECLARE @SQL VARCHAR(45);
 
 SET @SQL = 'CREATE DATABASE [' + @DatabaseName + ']';
 EXEC(@SQL);
 
 
 
-DECLARE @TableName NVARCHAR(100) = 'Users';
-DECLARE @SQL NVARCHAR(MAX);
+DECLARE @TableName VARCHAR(45) = 'Users';
+DECLARE @SQL VARCHAR(45);
 
 SET @SQL = '
 CREATE TABLE [' + @TableName + '] (
@@ -21,17 +21,19 @@ EXEC(@SQL);
 
 select * from Users
 
-DECLARE @TableName NVARCHAR(100) = 'Users';
-DECLARE @Name NVARCHAR(100) = 'John';
-DECLARE @Email NVARCHAR(100) = 'john@example.com';
-DECLARE @SQL NVARCHAR(MAX);
+DECLARE @TableName VARCHAR(45) = 'Users';
+DECLARE @Name VARCHAR(45) = 'John';
+DECLARE @Email VARCHAR(45) = 'john@example.com';
+DECLARE @SQL VARCHAR(MAX);
 
 SET @SQL = '
 INSERT INTO [' + @TableName + '] (Name, Email)
 VALUES (@Name, @Email)';
+
 
 EXEC sp_executesql 
     @SQL,
     N'@Name NVARCHAR(100), @Email NVARCHAR(100)',
     @Name=@Name,
     @Email=@Email;
+
