@@ -1,41 +1,42 @@
-
+//create database
 DECLARE @DatabaseName VARCHAR(45) = 'DynamicDB';
 DECLARE @SQL VARCHAR(45);
 
 SET @SQL = 'CREATE DATABASE [' + @DatabaseName + ']';
 EXEC(@SQL);
 
-
+//create create table
 
 DECLARE @TableName VARCHAR(45) = 'Users';
 DECLARE @SQL VARCHAR(45);
 
 SET @SQL = '
 CREATE TABLE [' + @TableName + '] (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Id INT ,
     Name NVARCHAR(100),
-    Email NVARCHAR(100)
 )';
 
 EXEC(@SQL);
 
 select * from Users
 
-DECLARE @TableName VARCHAR(45) = 'Users';
-DECLARE @Name VARCHAR(45) = 'John';
-DECLARE @Email VARCHAR(45) = 'john@example.com';
-DECLARE @SQL VARCHAR(MAX);
+//insert  
+DECLARE @createtable NVARCHAR(50) = 'students';
+declare @id INT=2;
+declare @name varchar(45)='soomro';
+DECLARE @SQL NVARCHAR(MAX);
 
-SET @SQL = '
-INSERT INTO [' + @TableName + '] (Name, Email)
-VALUES (@Name, @Email)';
+SET @SQL = 'insert into [' + @createtable + '](id,name)values(@id,@name);';
+
+EXEC sp_executesql
+  @SQL,
+  N'@id INT,@name VARCHAR(45)', 
+  @id= @id,
+  @name=@name;
 
 
-EXEC sp_executesql 
-    @SQL,
-    N'@Name NVARCHAR(100), @Email NVARCHAR(100)',
-    @Name=@Name,
-    @Email=@Email;
+
+
 
  exec sp_rename 'user','users'
  EXEC sp_help 'Users';
@@ -54,5 +55,6 @@ triggers
 
 select name
 from sys.procedures
+
 
 
